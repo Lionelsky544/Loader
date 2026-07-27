@@ -5,10 +5,10 @@ local PlaceId      = game.PlaceId
 local CYBERHUB_LOGO_URL = "https://raw.githubusercontent.com/finzbae2123/Assets/refs/heads/main/Logo.png"
 
 local Games = {
-    [6911148748]        = { Name = "Car Driving Indonesia (Auto Farm)", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-    [110369730911937]   = { Name = "Car Driving Indonesia (Auto Farm)", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-    [14005966837]       = { Name = "Car Driving Indonesia (Minigame)",  Version = "v1.0",     Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
-    [132986577553100]   = { Name = "Car Driving Indonesia Race Nostalgia",Version = "v1.0",     Url = "https://luaegis.net/scripts/v4/loaders/12ead4c7-c929-48e1-874d-91718eb30741.lua" }
+    [6911148748]        = { Name = "Car Driving Indonesia Joiner To Jawa Timur", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+    [110369730911937]   = { Name = "Car Driving Indonesia Auto Farm", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+    [14005966837]       = { Name = "Car Driving Indonesia Minigame",  Version = "v1.0",     Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
+    [132986577553100]   = { Name = "Car Driving Indonesia Race Nostalgia",Version = "v1.0",   Url = "https://luaegis.net/scripts/v4/loaders/12ead4c7-c929-48e1-874d-91718eb30741.lua" }
 }
 
 local function createNotification(title, desc, subDesc, duration)
