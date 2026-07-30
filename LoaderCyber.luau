@@ -1,14 +1,15 @@
 local TweenService = game:GetService("TweenService")
 local CoreGui      = game:GetService("CoreGui")
+local Players      = game:GetService("Players")
 local PlaceId      = game.PlaceId
 
 local CYBERHUB_LOGO_URL = "https://raw.githubusercontent.com/finzbae2123/Assets/refs/heads/main/Logo.png"
 
 local Games = {
-    [6911148748]        = { Name = "Car Driving Indonesia Joiner To Jawa Timur", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-    [110369730911937]   = { Name = "Car Driving Indonesia Auto Farm", Version = "v0.0.0.3", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-    [14005966837]       = { Name = "Car Driving Indonesia Minigame",  Version = "v1.0",     Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
-    [132986577553100]   = { Name = "Car Driving Indonesia Race Nostalgia",Version = "v1.0",   Url = "https://luaegis.net/scripts/v4/loaders/12ead4c7-c929-48e1-874d-91718eb30741.lua" }
+    [6911148748]        = { Name = LGS_ScriptName, Version = LGS_ScriptVersion, Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+    [110369730911937]   = { Name = LGS_ScriptName, Version = LGS_ScriptVersion, Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+    [14005966837]       = { Name = LGS_ScriptName, Version = LGS_ScriptVersion, Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
+    [132986577553100]   = { Name = LGS_ScriptName, Version = LGS_ScriptVersion, Url = "https://luaegis.net/scripts/v4/loaders/12ead4c7-c929-48e1-874d-91718eb30741.lua" }
 }
 
 local function createNotification(title, desc, subDesc, duration)
@@ -16,7 +17,13 @@ local function createNotification(title, desc, subDesc, duration)
     screenGui.Name = "CyberHubLoaderGui"
     screenGui.ResetOnSpawn = false
     screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    pcall(function() screenGui.Parent = CoreGui end)
+    
+    -- Safe mounting: prioritize gethui(), fallback to CoreGui, fallback to PlayerGui
+    local targetGui = (gethui and gethui()) or CoreGui
+    local success = pcall(function() screenGui.Parent = targetGui end)
+    if not success or not screenGui.Parent then
+        pcall(function() screenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui") end)
+    end
 
     local notifFrame = Instance.new("Frame")
     notifFrame.Name = "LiquidGlassNotif"
@@ -61,10 +68,13 @@ local function createNotification(title, desc, subDesc, duration)
 
     task.spawn(function()
         pcall(function()
-            if writefile and getcustomasset then
+            -- Secured API checks
+            if writefile and getcustomasset and isfile then
                 if not isfile("CyberHubLogo.png") then
                     local content = game:HttpGet(CYBERHUB_LOGO_URL)
-                    if content then writefile("CyberHubLogo.png", content) end
+                    if content and content ~= "" then 
+                        writefile("CyberHubLogo.png", content) 
+                    end
                 end
                 iconImg.Image = getcustomasset("CyberHubLogo.png") or iconImg.Image
             end
@@ -112,11 +122,29 @@ if config then
     createNotification("CyberHub Loader", config.Name, "By CyberHub Team • " .. config.Version, 4.5)
     task.wait(0.5)
 
-    local success, err = pcall(function() loadstring(game:HttpGet(config.Url))() end)
-    
-    if not success then
-        warn("CyberHub Loader Failed: " .. tostring(err))
-        createNotification("Loader Error", "Failed to load script", "System Error", 5.0)
+    -- Decoupled fetch, compile, and execute for exact error handling
+    local scriptData = nil
+    local httpSuccess, httpErr = pcall(function()
+        scriptData = game:HttpGet(config.Url)
+    end)
+
+    if not httpSuccess or not scriptData then
+        warn("CyberHub Network Error: " .. tostring(httpErr))
+        createNotification("Network Error", "Failed to fetch script", "Check connection/URL", 5.0)
+        return
+    end
+
+    local loadedFunc, compileErr = loadstring(scriptData)
+    if not loadedFunc then
+        warn("CyberHub Compile Error: " .. tostring(compileErr))
+        createNotification("Compile Error", "Script syntax invalid", "Server returned bad data", 5.0)
+        return
+    end
+
+    local execSuccess, execErr = pcall(loadedFunc)
+    if not execSuccess then
+        warn("CyberHub Execution Error: " .. tostring(execErr))
+        createNotification("Execution Error", "Script crashed on launch", "Check console", 5.0)
     end
 else
     warn("CyberHub Loader: Unregistered PlaceID -> " .. tostring(PlaceId))
