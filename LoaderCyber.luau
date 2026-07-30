@@ -119,7 +119,10 @@ end
 local config = Games[PlaceId]
 
 if config then
-    createNotification("CyberHub Loader", config.Name, "By CyberHub Team • " .. config.Version, 4.5)
+    local safeName = config.Name or "Enter Key"
+    local safeVersion = config.Version or "Enter Key Pls"
+    
+    createNotification("CyberHub Loader", tostring(safeName), "By CyberHub Team • " .. tostring(safeVersion), 4.5)
     task.wait(0.5)
 
     -- Decoupled fetch, compile, and execute for exact error handling
