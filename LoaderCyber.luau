@@ -61,8 +61,8 @@ local GamesDatabase = {
     [131378148336503] = {
         Name = "Drag Drive Simulator",
         Scripts = {
-            { Title = "Code 1: Cyber Hub RideGO Ojek", Desc = "Auto Team, Spawn Mio & RideGO Engine", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" },
-            { Title = "Code 2: Drag Race Automation", Desc = "Auto Drag Race & Speed Tuning Hub", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" }
+            -- { Title = "Code 1: Cyber Hub RideGO Ojek", Desc = "Auto Team, Spawn Mio & RideGO Engine", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" },
+            -- { Title = "Code 2: Drag Race Automation", Desc = "Auto Drag Race & Speed Tuning Hub", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" }
         }
     },
     [14005966837] = {
@@ -76,6 +76,7 @@ local GamesDatabase = {
         Scripts = {
             { Title = "Car Driving Indonesia Race Nostalgia", Desc = "Script For Nostalgic Racing", Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
             { Title = "Car Driving Indonesia Convoi Nostalgia", Desc = "Script For Nostalgic Convoi", Url = "https://luaegis.net/scripts/v4/loaders/082cea76-91d9-464c-8519-23813a08c2a3.lua" },
+            { Title = "Car Driving Indonesia For Testing", Desc = "Script For Testing", Url = "https://luaegis.net/scripts/v4/loaders/5c669faf-1419-485a-a687-9e17850afcc6.lua" },
         }
     }
 }
