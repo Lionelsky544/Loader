@@ -61,7 +61,7 @@ local GamesDatabase = {
     [131378148336503] = {
         Name = "Drag Drive Simulator",
         Scripts = {
-            -- { Title = "Code 1: Cyber Hub RideGO Ojek", Desc = "Auto Team, Spawn Mio & RideGO Engine", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" },
+        { Title = "Auto Farm", Desc = "AIt is still in the development stage and carries high risk; if you insist on proceeding, the responsibility is yours.", Url = "https://luaegis.net/scripts/v4/loaders/f1fe78e0-4a1f-4c56-b57a-2cfe43dddf8c.lua" },
             -- { Title = "Code 2: Drag Race Automation", Desc = "Auto Drag Race & Speed Tuning Hub", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" }
         }
     },
