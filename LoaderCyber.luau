@@ -51,6 +51,12 @@ local GamesDatabase = {
             { Title = "Quest Bandung", Desc = "Script Quest", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
         }
     },
+    [79488788685813] = {
+        Name = "Car Driving Indonesia (Event 17)",
+        Scripts = {
+            { Title = "Quest Bandung", Desc = "Script Quest", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
+        }
+    },
     [110369730911937] = {
         Name = "Car Driving Indonesia Auto Farm",
         Scripts = {
@@ -81,26 +87,15 @@ local GamesDatabase = {
 
 local function createLiquidGlassFrame(parent, targetSize, targetPos)
     targetPos = targetPos or UDim2.new(0.5, 0, 0.5, 0)
-    local frame = nil
-    local isCanvasGroup = false
-    pcall(function()
-        frame = Instance.new("CanvasGroup")
-        isCanvasGroup = true
-    end)
-    if not frame then
-        frame = Instance.new("Frame")
-    end
-
-    frame.Size = UDim2.new(0, targetSize.X.Offset * 0.75, 0, targetSize.Y.Offset * 0.75)
-    frame.Position = UDim2.new(0.5, 0, 0.46, 0)
+    
+    local frame = Instance.new("Frame")
+    frame.Size = targetSize
+    frame.Position = targetPos
     frame.AnchorPoint = Vector2.new(0.5, 0.5)
     frame.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
-    frame.BackgroundTransparency = 0.2
+    frame.BackgroundTransparency = 0.12
     frame.BorderSizePixel = 0
     frame.ClipsDescendants = true
-    if isCanvasGroup then
-        frame.GroupTransparency = 1
-    end
     frame.Parent = parent
 
     Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 18)
@@ -128,33 +123,30 @@ local function createLiquidGlassFrame(parent, targetSize, targetPos)
         end
     end)
 
-    return frame, targetSize, isCanvasGroup
+    return frame, targetSize
 end
 
-local function animateInModal(frame, targetSize, isCanvasGroup)
+local function animateInModal(frame, targetSize)
     frame.Size = UDim2.new(0, targetSize.X.Offset * 0.8, 0, targetSize.Y.Offset * 0.8)
     frame.Position = UDim2.new(0.5, 0, 0.45, 0)
-    if isCanvasGroup then frame.GroupTransparency = 1 end
 
     local tweenProps = {
         Size = targetSize,
         Position = UDim2.new(0.5, 0, 0.5, 0)
     }
-    if isCanvasGroup then tweenProps.GroupTransparency = 0 end
     
-    local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
     TweenService:Create(frame, tweenInfo, tweenProps):Play()
 end
 
-local function animateOutModal(frame, targetSize, isCanvasGroup, callback)
+local function animateOutModal(frame, targetSize, callback)
     local shrinkSize = UDim2.new(0, targetSize.X.Offset * 0.8, 0, targetSize.Y.Offset * 0.8)
     local tweenProps = {
         Size = shrinkSize,
         Position = UDim2.new(0.5, 0, 0.54, 0)
     }
-    if isCanvasGroup then tweenProps.GroupTransparency = 1 end
     
-    local tweenInfo = TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.In)
+    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In)
     local tween = TweenService:Create(frame, tweenInfo, tweenProps)
     tween:Play()
     tween.Completed:Connect(function()
@@ -185,7 +177,7 @@ local function showLiquidGlassNotif(titleText, mainDesc, subDesc, duration)
     notifFrame.AnchorPoint = Vector2.new(0.5, 0)
     notifFrame.Position = UDim2.new(0.5, 0, 0, -150)
     notifFrame.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
-    notifFrame.BackgroundTransparency = 0.2
+    notifFrame.BackgroundTransparency = 0.12
     notifFrame.BorderSizePixel = 0
     notifFrame.ClipsDescendants = true
     notifFrame.Parent = ScreenGui
@@ -278,7 +270,7 @@ end
 
 local function showLoadingScreen(scriptTitle, scriptUrl)
     local targetSize = UDim2.new(0, 430, 0, 260)
-    local loadModal, _, isCanvasGroup = createLiquidGlassFrame(ScreenGui, targetSize)
+    local loadModal = createLiquidGlassFrame(ScreenGui, targetSize)
 
     local logoFrame = Instance.new("Frame", loadModal)
     logoFrame.Size = UDim2.new(0, 80, 0, 80)
@@ -378,7 +370,7 @@ local function showLoadingScreen(scriptTitle, scriptUrl)
     percentLbl.TextSize = 13
     percentLbl.TextXAlignment = Enum.TextXAlignment.Center
 
-    animateInModal(loadModal, targetSize, isCanvasGroup)
+    animateInModal(loadModal, targetSize)
 
     task.spawn(function()
         local steps = {
@@ -424,7 +416,7 @@ local function showLoadingScreen(scriptTitle, scriptUrl)
             percentLbl.Text = "FAILED"
             percentLbl.TextColor3 = Color3.fromRGB(255, 70, 70)
             task.wait(2.5)
-            animateOutModal(loadModal, targetSize, isCanvasGroup, function()
+            animateOutModal(loadModal, targetSize, function()
                 if getgenv then getgenv().CYBER_LOADER_RUNNING = nil end
             end)
             return
@@ -482,7 +474,7 @@ local function showLoadingScreen(scriptTitle, scriptUrl)
 
         task.wait(1.8)
 
-        animateOutModal(loadModal, targetSize, isCanvasGroup, function()
+        animateOutModal(loadModal, targetSize, function()
             if getgenv then getgenv().CYBER_LOADER_RUNNING = nil end
             showLiquidGlassNotif("Cyber Hub", "Welcome " .. tostring(LocalPlayer.Name), "Enjoy To Script", 4.5)
         end)
@@ -507,7 +499,7 @@ local function showSelectionModal(gameConfig)
     local modalHeight = math.min(410, headerOffset + contentHeight + 25)
     local targetSize = UDim2.new(0, 460, 0, modalHeight)
 
-    local selectModal, _, isCanvasGroup = createLiquidGlassFrame(ScreenGui, targetSize)
+    local selectModal = createLiquidGlassFrame(ScreenGui, targetSize)
     
     local bgLogo = Instance.new("ImageLabel", selectModal)
     bgLogo.Size = UDim2.new(0, 180, 0, 180)
@@ -632,13 +624,13 @@ local function showSelectionModal(gameConfig)
         end)
 
         btn.MouseButton1Click:Connect(function()
-            animateOutModal(selectModal, targetSize, isCanvasGroup, function()
+            animateOutModal(selectModal, targetSize, function()
                 showLoadingScreen(scriptData.Title, scriptData.Url)
             end)
         end)
     end
 
-    animateInModal(selectModal, targetSize, isCanvasGroup)
+    animateInModal(selectModal, targetSize)
 end
 
 local gameConfig = GamesDatabase[PlaceId]
@@ -651,7 +643,8 @@ if gameConfig then
         showLoadingScreen(singleScript.Title, singleScript.Url)
     end
 else
-    local unsuppModal = createLiquidGlassFrame(ScreenGui, UDim2.new(0, 380, 0, 160), UDim2.new(0.5, 0, 0.5, 0))
+    local targetSize = UDim2.new(0, 380, 0, 160)
+    local unsuppModal = createLiquidGlassFrame(ScreenGui, targetSize, UDim2.new(0.5, 0, 0.5, 0))
 
     local tLbl = Instance.new("TextLabel", unsuppModal)
     tLbl.Size = UDim2.new(1, -40, 0, 25)
@@ -693,6 +686,8 @@ else
             end
         end)
     end)
+
+    animateInModal(unsuppModal, targetSize)
 
     task.delay(6, function()
         pcall(function() unsuppModal:Destroy() end)
