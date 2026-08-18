@@ -47,8 +47,13 @@ local GamesDatabase = {
     [6911148748] = {
         Name = "Car Driving Indonesia",
         Scripts = {
-            { Title = "Car Driving Indonesia", Desc = "Joiner To Jawa TImur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-----        { Title = "Code 2: CDID Auto Farm Edition", Desc = "Automated Money & Delivery Engine", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" }
+            { Title = "Auto Farm", Desc = "Joiner To Jawa TImur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+----        { Title = "Quest 17An", Desc = "Joiner To Bandung", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
+        }
+     [6911148748] = {
+        Name = "Car Driving Indonesia",
+        Scripts = {
+            { Title = "Quest Bandung", Desc = "Script Quest", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" },
         }
     },
     [110369730911937] = {
