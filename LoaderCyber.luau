@@ -47,27 +47,20 @@ local GamesDatabase = {
     [6911148748] = {
         Name = "Car Driving Indonesia",
         Scripts = {
-            { Title = "Auto Farm", Desc = "Joiner To Jawa TImur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-----        { Title = "Quest 17An", Desc = "Joiner To Bandung", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
-        }
-     [6911148748] = {
-        Name = "Car Driving Indonesia",
-        Scripts = {
-            { Title = "Quest Bandung", Desc = "Script Quest", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" },
+            { Title = "Auto Farm", Desc = "Joiner To Jawa Timur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
+            { Title = "Quest Bandung", Desc = "Script Quest", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
         }
     },
     [110369730911937] = {
         Name = "Car Driving Indonesia Auto Farm",
         Scripts = {
-            { Title = "Car Driving Indonesia Auto Farm", Desc = "Only Work In Jawa TImur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
---          { Title = "Code 2: RideGO Ojek Automation", Desc = "Ojek Online Auto Passenger Delivery", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" }
+            { Title = "Car Driving Indonesia Auto Farm", Desc = "Only Work In Jawa Timur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" }
         }
     },
     [131378148336503] = {
         Name = "Drag Drive Simulator",
         Scripts = {
-        { Title = "Auto Farm", Desc = "AIt is still in the development stage and carries high risk; if you insist on proceeding, the responsibility is yours.", Url = "https://luaegis.net/scripts/v4/loaders/f1fe78e0-4a1f-4c56-b57a-2cfe43dddf8c.lua" },
-            -- { Title = "Code 2: Drag Race Automation", Desc = "Auto Drag Race & Speed Tuning Hub", Url = "https://raw.githubusercontent.com/Lionelsky544/AssetsFinal/refs/heads/main/Logo.png" }
+            { Title = "Auto Farm", Desc = "Development stage (High Risk)", Url = "https://luaegis.net/scripts/v4/loaders/f1fe78e0-4a1f-4c56-b57a-2cfe43dddf8c.lua" }
         }
     },
     [14005966837] = {
@@ -81,7 +74,7 @@ local GamesDatabase = {
         Scripts = {
             { Title = "Car Driving Indonesia Race Nostalgia", Desc = "Script For Nostalgic Racing", Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" },
             { Title = "Car Driving Indonesia Convoi Nostalgia", Desc = "Script For Nostalgic Convoi", Url = "https://luaegis.net/scripts/v4/loaders/082cea76-91d9-464c-8519-23813a08c2a3.lua" },
-            { Title = "Car Driving Indonesia For Testing", Desc = "Script For Testing", Url = "https://luaegis.net/scripts/v4/loaders/5c669faf-1419-485a-a687-9e17850afcc6.lua" },
+            { Title = "Car Driving Indonesia For Testing", Desc = "Script For Testing", Url = "https://luaegis.net/scripts/v4/loaders/5c669faf-1419-485a-a687-9e17850afcc6.lua" }
         }
     }
 }
