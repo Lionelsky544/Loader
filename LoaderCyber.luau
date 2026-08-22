@@ -50,13 +50,13 @@ local GamesDatabase = {
         Name = "Car Driving Indonesia",
         Scripts = {
             { Title = "Auto Farm", Desc = "Joiner to Jawa Timur", Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" },
-            { Title = "Quest Bandung", Desc = "Event Quest Automation", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
+            { Title = "Quest Bandung Kemerdekaan", Desc = "Event Quest Automation", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
         }
     },
     [79488788685813] = {
         Name = "Car Driving Indonesia (Event 17)",
         Scripts = {
-            { Title = "Quest Bandung", Desc = "Event Quest Automation", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
+            { Title = "Quest Bandung Kemerdekaan", Desc = "Event Quest Automation", Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" }
         }
     },
     [110369730911937] = {
@@ -75,6 +75,7 @@ local GamesDatabase = {
         Name = "Car Driving Indonesia Minigame",
         Scripts = {
             { Title = "Minigame Auto-Solver", Desc = "Auto Complete Minigames", Url = "https://luaegis.net/scripts/v4/loaders/f144231e-ba21-4667-9dfc-5f1826f6c83c.lua" }
+            { Title = "Car Driving Indonesia (MyBca)", Desc = "Bca Quest", Url = "https://luaegis.net/scripts/v4/loaders/f4cc71e9-5ca1-4fff-89ef-c91019541832.lua" }
         }
     },
     [132986577553100] = {
