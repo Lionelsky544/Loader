@@ -110,11 +110,11 @@ local GamesDatabase = {
             }
         }
     },
-    [6911148748] = {
+    [79488788685813] = {
         Name = "CDID — Bandung Places",
         Scripts = {
             { 
-                Title = "Minigame Auto Complete", 
+                Title = "Cdid Quest Kemerdekaan", 
                 Desc = "Auto Quest Kemerdekaan, instant skillcheck & QTE solver", 
                 Url = "https://luaegis.net/scripts/v4/loaders/d0fbc6dc-49d7-433a-809b-86dd97ceae9c.lua" 
             }
