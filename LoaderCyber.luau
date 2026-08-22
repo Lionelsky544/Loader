@@ -106,7 +106,7 @@ local GamesDatabase = {
             {
                 Title = "MyBCA Bank Quest", 
                 Desc = "Auto ATM delivery, minigame solve & salary farm", 
-                Url = "https://luaegis.net/scripts/v4/loaders/fce37d22-de15-4881-817b-213efcf6bf20.lua" 
+                Url = "https://luaegis.net/scripts/v4/loaders/f4cc71e9-5ca1-4fff-89ef-c91019541832.lua" 
             }
         }
     },
